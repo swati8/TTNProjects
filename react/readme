@@ -1,0 +1,44 @@
+1) npm install webpack --save
+2) npm install webpack-dev-server --save
+3) npm install react --save
+4) npm install react-dom --save
+5) npm install babel-core
+6) npm install babel-loader
+7) npm install babel-preset-react
+8) npm install babel-preset-es2015
+9) touch index.html
+10) touch App.jsx
+11) touch main.js
+12) touch webpack.config.js
+13) "start": "webpack-dev-server --hot" in packagejson under script tag
+webpack.config.js
+
+var config = {
+   entry: './main.js',
+
+   output: {
+      path:'./',
+      filename: 'index.js',
+   },
+
+   devServer: {
+      inline: true,
+      port: 8080
+   },
+
+   module: {
+      loaders: [
+         {
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            loader: 'babel',
+
+            query: {
+               presets: ['es2015', 'react']
+            }
+         }
+      ]
+   }
+}
+
+module.exports = config;
